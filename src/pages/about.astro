@@ -1,0 +1,88 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../content/site';
+
+const title = 'About';
+const description = `About ${site.founder.name}, founder of ${site.name} — 22-year marketing executive with 8 years operating inside PE-backed, franchise, and home services businesses.`;
+---
+
+<Base title={title} description={description}>
+  <section class="bg-field">
+    <div class="container-content py-24">
+      <div class="max-w-3xl">
+        <p class="eyebrow">About</p>
+        <span class="accent-line"></span>
+        <h1 class="text-4xl md:text-6xl leading-[1.1] font-medium">
+          A senior marketing operator, not a consultant with a deck.
+        </h1>
+        <p class="mt-8 text-lg md:text-xl text-forge/80 leading-relaxed">
+          Battleborn Advisory is a solo senior marketing practice founded and led by {site.founder.name} in Atlanta, Georgia. Every engagement is led personally by Christina — no handoffs to a junior team, no packaged strategy pulled from a shelf.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-signal/30">
+    <div class="container-content py-24 grid gap-16 md:grid-cols-5 items-start">
+      <div class="md:col-span-2">
+        <p class="eyebrow">The Founder</p>
+        <span class="accent-line"></span>
+        <h2 class="text-3xl md:text-4xl leading-tight">
+          Christina Johnson.
+        </h2>
+        <p class="text-lg text-forge/70 mt-4">Founder · Battleborn Advisory</p>
+        <p class="text-sm text-forge/60 mt-1">Atlanta, GA</p>
+      </div>
+      <div class="md:col-span-3 text-lg leading-relaxed text-forge/85 space-y-6">
+        <p>
+          Twenty-two years of marketing leadership spanning professional sports, agency work, and executive in-house roles across PE-backed, multi-brand, multi-market home services and home improvement franchise businesses.
+        </p>
+        <p>
+          Most recently VP of Marketing at Artisan Family of Brands, a PE-backed portfolio of six home services brands across twelve markets. Scaled the portfolio from one to six brands. Increased marketing's contribution to total company revenue from 40% to 47%. Integrated four post-acquisition marketing operations with measurable lift in every market — including +96% leads and +124% appointments in Chattanooga. Built a custom AI-assisted reporting dashboard that consolidated three separate CRM platforms into a unified lead table, automating KPI reporting and generating executive summaries that became the basis for board-level performance reviews.
+        </p>
+        <p>
+          Before that, Head of Marketing at ShelfGenie / Neighborly, directing $18M+ in national marketing investment across a 140+ location franchise system in the U.S. and Canada. Led marketing through ShelfGenie's acquisition by Neighborly and the full post-acquisition integration.
+        </p>
+        <p>
+          Earlier: VP of Brand Strategy at Echo Media Agency, leading client strategy and performance marketing for Kohler's Walk-In Bath &amp; Shower division; consolidating 20+ third-party lead gen vendors into a materially improved ROI on Kohler's investment. Founded Battleborn Creative in 2017. Spent 13 years leading digital, media, and operations for the Atlanta Gladiators before all of that.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-field">
+    <div class="container-content py-24">
+      <div class="max-w-3xl">
+        <p class="eyebrow">What This Practice Is</p>
+        <span class="accent-line"></span>
+        <h2 class="text-3xl md:text-4xl leading-tight">
+          Modern marketing leadership with candid AI guidance.
+        </h2>
+        <div class="text-lg text-forge/80 leading-relaxed space-y-6 mt-8">
+          <p>
+            The work is system design: how channels connect, how performance gets measured even when the data is messy, and how marketing ties directly to revenue in a way leadership can actually see and trust.
+          </p>
+          <p>
+            AI is treated as a practical tool for efficiency and insight, not a novelty. The guiding principle: the goal is not to be the company using the most AI. It is to be the company using the right AI.
+          </p>
+          <p>
+            Battleborn doesn't perform expertise. It delivers it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-forge text-field">
+    <div class="container-content py-20 text-center">
+      <p class="eyebrow !text-livewire">Ready to Talk?</p>
+      <span class="accent-line !mx-auto"></span>
+      <h2 class="text-3xl md:text-4xl leading-tight text-field max-w-2xl mx-auto">
+        Every engagement starts with a conversation.
+      </h2>
+      <div class="mt-10">
+        <a href="/contact/" class="btn-primary !bg-livewire !text-field hover:!bg-signal hover:!text-forge">Start a Conversation</a>
+      </div>
+    </div>
+  </section>
+</Base>

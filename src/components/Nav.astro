@@ -1,0 +1,60 @@
+---
+import { site } from '../content/site';
+
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/about/', label: 'About' },
+  { href: '/services/', label: 'Services' },
+  { href: '/speaking/', label: 'Speaking' },
+  { href: '/notes/', label: 'Notes' },
+  { href: '/faq/', label: 'FAQ' },
+  { href: '/contact/', label: 'Contact' }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="border-b border-forge/10">
+  <nav class="container-content flex items-center justify-between py-6" aria-label="Primary">
+    <a href="/" class="flex items-center gap-3 no-underline group" aria-label={`${site.name} home`}>
+      <span class="text-lg font-medium text-forge">{site.name}</span>
+    </a>
+    <ul class="hidden md:flex items-center gap-8 text-sm">
+      {navItems.map(({ href, label }) => (
+        <li>
+          <a
+            href={href}
+            class:list={[
+              'no-underline transition-colors',
+              currentPath === href || (href !== '/' && currentPath.startsWith(href))
+                ? 'text-livewire'
+                : 'text-forge hover:text-livewire'
+            ]}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <a
+      href="/contact/"
+      class="hidden md:inline-flex btn-primary text-xs !py-2 !px-4"
+    >
+      Start a Conversation
+    </a>
+    <details class="md:hidden">
+      <summary class="cursor-pointer list-none text-forge" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+        </svg>
+      </summary>
+      <ul class="absolute right-6 mt-4 bg-field border border-forge/10 shadow-md p-6 flex flex-col gap-4 text-sm z-20">
+        {navItems.map(({ href, label }) => (
+          <li>
+            <a href={href} class="text-forge no-underline">{label}</a>
+          </li>
+        ))}
+      </ul>
+    </details>
+  </nav>
+</header>

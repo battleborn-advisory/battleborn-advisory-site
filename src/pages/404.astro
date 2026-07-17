@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = '404 · Page Not Found';
+const description = 'The page you were looking for does not exist.';
+---
+
+<Base title={title} description={description}>
+  <section class="bg-field">
+    <div class="container-content py-32 text-center">
+      <p class="eyebrow">404</p>
+      <span class="accent-line !mx-auto"></span>
+      <h1 class="text-4xl md:text-6xl leading-[1.1] font-medium">
+        This page didn't survive contact with the funnel.
+      </h1>
+      <p class="mt-8 text-lg text-forge/80 leading-relaxed max-w-xl mx-auto">
+        The URL you're looking for doesn't exist. Try the navigation, or head back to the front door.
+      </p>
+      <div class="mt-10 flex justify-center gap-4 flex-wrap">
+        <a href="/" class="btn-primary">Home</a>
+        <a href="/services/" class="btn-secondary">Services</a>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site } from '../../content/site';
+
+const title = 'Notes';
+const description = 'Notes and essays from Christina Johnson on marketing leadership, AI implementation, attribution, and building marketing systems that actually deliver revenue.';
+
+// Notes are added as individual .astro files in this /notes/ directory.
+// Each new note file becomes a URL: /notes/your-slug/.
+// Once you have 3+ notes, we can list them here dynamically.
+
+const notesList: { slug: string; title: string; date: string; excerpt: string }[] = [
+  // Placeholder — add real notes here as you publish them.
+  // Example:
+  // {
+  //   slug: 'the-goal-isnt-the-most-ai',
+  //   title: "The goal isn't to be the company using the most AI.",
+  //   date: '2026-08-01',
+  //   excerpt: 'It's to be the company using the right AI. What "right" means, and how to figure it out.'
+  // }
+];
+---
+
+<Base title={title} description={description}>
+  <section class="bg-field">
+    <div class="container-content py-24">
+      <div class="max-w-3xl">
+        <p class="eyebrow">Notes</p>
+        <span class="accent-line"></span>
+        <h1 class="text-4xl md:text-6xl leading-[1.1] font-medium">
+          Marketing notes, from the trenches.
+        </h1>
+        <p class="mt-8 text-lg md:text-xl text-forge/80 leading-relaxed">
+          Short essays on modern marketing leadership, AI implementation, attribution, and the systems that actually move revenue. Published here first, cross-posted to LinkedIn.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-signal/30">
+    <div class="container-content py-24">
+      {notesList.length === 0 ? (
+        <div class="max-w-2xl mx-auto text-center bg-field p-14 border border-forge/10">
+          <p class="eyebrow">Coming Soon</p>
+          <span class="accent-line !mx-auto"></span>
+          <h2 class="text-2xl md:text-3xl leading-snug mt-2">
+            First notes go up soon.
+          </h2>
+          <p class="mt-6 text-forge/70 leading-relaxed">
+            In the meantime, follow along on LinkedIn — both the personal profile and the Battleborn company page — for the current thinking.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4 justify-center">
+            <a href={site.founder.linkedin} class="btn-primary">Follow on LinkedIn</a>
+            <a href={site.contact.linkedin} class="btn-secondary">Company Page</a>
+          </div>
+        </div>
+      ) : (
+        <ul class="max-w-3xl mx-auto space-y-6">
+          {notesList.map((note) => (
+            <li>
+              <a href={`/notes/${note.slug}/`} class="block bg-field p-8 md:p-10 no-underline group hover:shadow-lg transition-shadow">
+                <p class="eyebrow">{note.date}</p>
+                <h2 class="text-2xl md:text-3xl leading-snug mt-4 group-hover:text-livewire transition-colors">
+                  {note.title}
+                </h2>
+                <p class="mt-4 text-forge/70 leading-relaxed">{note.excerpt}</p>
+                <p class="mt-6 text-sm font-medium tracking-wide text-livewire uppercase">Read →</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+</Base>

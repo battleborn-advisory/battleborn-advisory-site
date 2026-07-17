@@ -1,0 +1,75 @@
+---
+// Emits Organization + Person schema on every page, plus optional per-page schema.
+// Pass `schema` prop to add page-specific structured data (Service, FAQPage, etc.).
+
+import { site } from '../content/site';
+
+interface Props {
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { schema } = Astro.props;
+
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${site.url}/#organization`,
+  name: site.name,
+  legalName: 'Battleborn Advisory',
+  url: site.url,
+  description: site.description,
+  slogan: site.essence,
+  founder: { '@id': `${site.url}/#founder` },
+  areaServed: 'United States',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Atlanta',
+    addressRegion: 'GA',
+    addressCountry: 'US'
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: site.contact.email,
+    contactType: 'sales',
+    availableLanguage: 'English'
+  },
+  sameAs: [site.contact.linkedin]
+};
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${site.url}/#founder`,
+  name: site.founder.name,
+  jobTitle: site.founder.role,
+  worksFor: { '@id': `${site.url}/#organization` },
+  email: site.founder.email,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Atlanta',
+    addressRegion: 'GA',
+    addressCountry: 'US'
+  },
+  sameAs: [site.founder.linkedin],
+  knowsAbout: [
+    'Fractional CMO',
+    'Marketing Strategy',
+    'Marketing Audit',
+    'AI Implementation',
+    'Pre-Sale Marketing Readiness',
+    'PE-Backed Marketing',
+    'Franchise Marketing',
+    'Home Services Marketing',
+    'Multi-Brand Marketing',
+    'Attribution',
+    'Demand Generation'
+  ]
+};
+
+const pageSchema = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+const allSchema = [organization, person, ...pageSchema];
+---
+
+{allSchema.map((json) => (
+  <script type="application/ld+json" set:html={JSON.stringify(json)} />
+))}

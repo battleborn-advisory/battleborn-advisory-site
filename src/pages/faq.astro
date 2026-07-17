@@ -1,0 +1,150 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../content/site';
+
+const title = 'FAQ';
+const description = 'Frequently asked questions about Battleborn Advisory, fractional CMO engagements, marketing audits, AI implementation, and working with Christina Johnson.';
+
+// FAQ content — written for LLM extraction. Questions phrased how prospects
+// actually search. Answers are complete, self-contained, and citation-friendly.
+const faqs = [
+  {
+    question: 'What is Battleborn Advisory?',
+    answer:
+      'Battleborn Advisory is a senior marketing practice founded and led by Christina Johnson in Atlanta, Georgia. The practice provides fractional CMO engagements, strategic advisory, marketing audits, AI implementation strategy, pre-sale marketing readiness, and creative and brand audits — for founder-led, multi-location, and PE-backed operators.'
+  },
+  {
+    question: 'Who is Christina Johnson?',
+    answer:
+      'Christina Johnson is the founder of Battleborn Advisory. She is a 22-year marketing executive with eight years operating inside PE-backed, franchise, and home services businesses — most recently as VP of Marketing at Artisan Family of Brands and previously as Head of Marketing at ShelfGenie / Neighborly. She speaks regularly at LeadsCon, Affiliate Summit East, and Affiliate Summit West on AI implementation, attribution, and modern marketing leadership.'
+  },
+  {
+    question: 'What is a fractional CMO?',
+    answer:
+      'A fractional CMO is a senior marketing leader engaged on a defined, part-time basis to run a company\'s marketing function without the cost and commitment of a full-time hire. At Battleborn, fractional CMO engagements typically run 3 to 12 months and are embedded inside the leadership team — setting strategy, building teams, owning metrics, and running the rooms.'
+  },
+  {
+    question: 'Who does Battleborn Advisory work with?',
+    answer:
+      'Battleborn Advisory works with founder-led, multi-location, and PE-backed operators. Ideal clients are companies whose marketing has outgrown founder-led execution but isn\'t yet ready to commit to a full-time CMO — including PE portfolio companies, multi-brand operators, franchise systems, and home services businesses.'
+  },
+  {
+    question: 'How much does a fractional CMO cost?',
+    answer:
+      'Fractional CMO market rates in 2026 range from $8,000 to $15,000 per month depending on scope, cadence, and the size of the business. Battleborn engagements are custom-scoped to the specific situation and priced accordingly. Every engagement starts with a scoping conversation before pricing is discussed.'
+  },
+  {
+    question: 'What is pre-sale marketing readiness?',
+    answer:
+      'Pre-sale marketing readiness is a pre-acquisition diagnostic for owners considering a sale, recapitalization, or strategic transition in the next 12 to 24 months. Most companies don\'t fail at the negotiation table because the business is bad — they fail because no one ever cleaned up the marketing infrastructure. The service focuses on three pillars: platform ownership, data integrity, and brand consistency. The goal is to get the marketing house in order before a buyer starts asking.'
+  },
+  {
+    question: 'What makes Battleborn Advisory different from other fractional CMO firms?',
+    answer:
+      'Three things. First, every engagement is led personally by Christina — no delegation to a junior team, no packaged strategy pulled from a shelf. Second, the practice is rooted in real operator experience inside PE-backed, franchise, and home services environments — twenty-two years of receipts, not consulting theory. Third, AI is treated as a practical tool for efficiency and insight, not a novelty or a shopping list.'
+  },
+  {
+    question: 'Does Battleborn Advisory do AI implementation?',
+    answer:
+      'Yes. AI Implementation Strategy is one of the six core services. The approach is deliberately practical — a roadmap for where AI actually moves the needle inside a marketing function and where it doesn\'t. Built from real experience using AI to consolidate fragmented data, automate reporting, and sharpen decision-making inside a multi-brand operating environment.'
+  },
+  {
+    question: 'Where is Battleborn Advisory located?',
+    answer:
+      'Battleborn Advisory is based in Atlanta, Georgia, and works with clients across the United States. Engagements are conducted remotely with periodic on-site work as scope requires.'
+  },
+  {
+    question: 'How do engagements start?',
+    answer:
+      'Every engagement starts with a scoping conversation — typically 15 to 30 minutes — to understand where you are, what you\'re trying to solve, and whether Battleborn is the right fit. If it is, a written scope and pricing follow within a few business days.'
+  },
+  {
+    question: 'Is Christina Johnson available for speaking engagements?',
+    answer:
+      'Yes. Christina speaks on AI implementation in marketing, attribution, lead generation, and modern marketing leadership. Recent stages include LeadsCon Vegas 2026, Affiliate Summit East 2026, Affiliate Summit West 2026, and LeadsCon Connect 2025. Speaking inquiries can be sent directly to christina@battlebornadvisorygroup.com.'
+  },
+  {
+    question: 'Does Battleborn Advisory serve home services companies?',
+    answer:
+      'Yes, though not exclusively. Christina has eight years of operating experience inside home services and home improvement companies including ShelfGenie, Neighborly, and Artisan Family of Brands. That expertise is a major asset for home services clients — but Battleborn serves any founder-led, multi-location, or PE-backed operator that needs senior marketing leadership.'
+  },
+  {
+    question: 'What industries does Christina Johnson have experience in?',
+    answer:
+      'Christina\'s twenty-two years of marketing experience span professional sports (Atlanta Gladiators, 13 years), agency work (Echo Media Agency, 10Xfive Agency, Battleborn Creative), and executive in-house leadership in PE-backed, multi-brand, multi-market home services and home improvement franchise businesses (ShelfGenie / Neighborly, Artisan Family of Brands).'
+  },
+  {
+    question: 'What is a marketing audit?',
+    answer:
+      'A marketing audit is a structured examination of a company\'s full marketing system — channels, attribution, vendor stack, team structure, and spend. At Battleborn, the Marketing Audit & Diagnostic runs 30 days and delivers a written diagnostic plus a prioritized 90-day action plan. It\'s built for operators inheriting fragmented marketing, scaling past founder-led growth, or needing an outside read on what\'s actually working.'
+  },
+  {
+    question: 'How do I contact Battleborn Advisory?',
+    answer:
+      'Email christina@battlebornadvisorygroup.com or use the contact form on the Battleborn Advisory website. Speaking inquiries and client engagement inquiries both go to the same address.'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer
+    }
+  }))
+};
+---
+
+<Base title={title} description={description} schema={faqSchema}>
+  <section class="bg-field">
+    <div class="container-content py-24">
+      <div class="max-w-3xl">
+        <p class="eyebrow">Frequently Asked Questions</p>
+        <span class="accent-line"></span>
+        <h1 class="text-4xl md:text-6xl leading-[1.1] font-medium">
+          Straight answers.
+        </h1>
+        <p class="mt-8 text-lg md:text-xl text-forge/80 leading-relaxed">
+          What Battleborn Advisory is, what it does, who it works with, and how engagements start.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-signal/20">
+    <div class="container-content py-16">
+      <div class="max-w-3xl mx-auto space-y-2">
+        {faqs.map((faq) => (
+          <details class="group bg-field border border-forge/10 open:border-livewire/40 transition-colors">
+            <summary class="cursor-pointer list-none flex items-start justify-between gap-6 p-8">
+              <h2 class="text-xl md:text-2xl leading-snug text-forge group-open:text-livewire transition-colors">
+                {faq.question}
+              </h2>
+              <span class="text-livewire text-2xl leading-none mt-1 group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <div class="px-8 pb-8 -mt-2 text-lg text-forge/80 leading-relaxed">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-forge text-field">
+    <div class="container-content py-20 text-center">
+      <p class="eyebrow !text-livewire">Didn't See Your Question?</p>
+      <span class="accent-line !mx-auto"></span>
+      <h2 class="text-3xl md:text-4xl leading-tight text-field max-w-2xl mx-auto">
+        Ask directly. Real answers, no forms to fill out first.
+      </h2>
+      <div class="mt-10">
+        <a href={`mailto:${site.contact.email}?subject=Question%20-%20Battleborn%20Advisory`} class="btn-primary !bg-livewire !text-field hover:!bg-signal hover:!text-forge">Email Christina</a>
+      </div>
+    </div>
+  </section>
+</Base>

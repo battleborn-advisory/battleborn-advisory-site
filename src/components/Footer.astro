@@ -1,0 +1,47 @@
+---
+import { site } from '../content/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-forge text-field mt-24">
+  <div class="container-content py-14 grid gap-12 md:grid-cols-4">
+    <div class="md:col-span-2">
+      <p class="text-xl font-medium leading-snug">{site.name}</p>
+      <span class="accent-line !my-4 !bg-livewire"></span>
+      <p class="text-sm text-signal max-w-md leading-relaxed">
+        {site.essence}
+      </p>
+      <p class="text-xs text-signal/70 mt-6 uppercase tracking-[0.2em]">
+        Atlanta, GA · Founded 2026
+      </p>
+    </div>
+
+    <div>
+      <p class="eyebrow !text-signal">Practice</p>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><a href="/about/" class="text-field no-underline hover:text-livewire">About</a></li>
+        <li><a href="/services/" class="text-field no-underline hover:text-livewire">Services</a></li>
+        <li><a href="/speaking/" class="text-field no-underline hover:text-livewire">Speaking</a></li>
+        <li><a href="/notes/" class="text-field no-underline hover:text-livewire">Notes</a></li>
+        <li><a href="/faq/" class="text-field no-underline hover:text-livewire">FAQ</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="eyebrow !text-signal">Contact</p>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><a href={`mailto:${site.contact.email}`} class="text-field no-underline hover:text-livewire break-all">{site.contact.email}</a></li>
+        <li><a href={site.founder.linkedin} class="text-field no-underline hover:text-livewire" rel="me">LinkedIn (Christina)</a></li>
+        <li><a href={site.contact.linkedin} class="text-field no-underline hover:text-livewire">LinkedIn (Company)</a></li>
+        <li><a href="/contact/" class="text-field no-underline hover:text-livewire">Start a conversation →</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-signal/20">
+    <div class="container-content py-6 flex flex-col md:flex-row gap-4 justify-between text-xs text-signal/70">
+      <p>© {year} {site.name}. All rights reserved.</p>
+      <p>Born in the trenches. Built for the boardroom.</p>
+    </div>
+  </div>
+</footer>

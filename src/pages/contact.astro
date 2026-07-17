@@ -1,0 +1,163 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../content/site';
+
+const title = 'Contact';
+const description = 'Contact Battleborn Advisory. Start a client engagement conversation or send a speaking inquiry directly to Christina Johnson.';
+
+// Web3Forms endpoint. Replace WEB3FORMS_ACCESS_KEY with the real access key
+// once the account is created at https://web3forms.com.
+// Sign up with christina@battlebornadvisorygroup.com, create a form, copy the
+// access key here. Free plan supports unlimited submissions to your email.
+const WEB3FORMS_ACCESS_KEY = 'REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY';
+---
+
+<Base title={title} description={description}>
+  <section class="bg-field">
+    <div class="container-content py-24">
+      <div class="max-w-3xl">
+        <p class="eyebrow">Contact</p>
+        <span class="accent-line"></span>
+        <h1 class="text-4xl md:text-6xl leading-[1.1] font-medium">
+          Start a conversation.
+        </h1>
+        <p class="mt-8 text-lg md:text-xl text-forge/80 leading-relaxed">
+          Every engagement starts here. Tell me what you're working on and where you're stuck. Fifteen minutes on a call to see if Battleborn is the right fit.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Form -->
+  <section class="bg-signal/30">
+    <div class="container-content py-24">
+      <div class="grid gap-16 md:grid-cols-5 items-start max-w-5xl mx-auto">
+        <div class="md:col-span-2">
+          <p class="eyebrow">Client Engagements</p>
+          <span class="accent-line-sm"></span>
+          <h2 class="text-2xl md:text-3xl leading-snug mt-2">
+            Use the form for engagement inquiries.
+          </h2>
+          <p class="text-forge/70 mt-4 leading-relaxed">
+            Every submission lands in Christina's inbox. Response within one business day.
+          </p>
+          <p class="mt-8 text-sm text-forge/60">
+            Prefer email? <a href={`mailto:${site.contact.email}`} class="text-forge font-medium">{site.contact.email}</a>
+          </p>
+        </div>
+
+        <form
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          class="md:col-span-3 bg-field p-8 md:p-10 space-y-6"
+        >
+          <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+          <input type="hidden" name="subject" value="New engagement inquiry — Battleborn Advisory" />
+          <input type="hidden" name="from_name" value="Battleborn Advisory website" />
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <div>
+            <label for="name" class="block text-sm font-medium text-forge">Name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              required
+              class="mt-2 block w-full border border-forge/20 bg-field px-4 py-3 text-forge focus:outline-none focus:border-livewire"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium text-forge">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              required
+              class="mt-2 block w-full border border-forge/20 bg-field px-4 py-3 text-forge focus:outline-none focus:border-livewire"
+            />
+          </div>
+
+          <div>
+            <label for="company" class="block text-sm font-medium text-forge">Company</label>
+            <input
+              type="text"
+              name="company"
+              id="company"
+              class="mt-2 block w-full border border-forge/20 bg-field px-4 py-3 text-forge focus:outline-none focus:border-livewire"
+            />
+          </div>
+
+          <div>
+            <label for="role" class="block text-sm font-medium text-forge">Your role</label>
+            <input
+              type="text"
+              name="role"
+              id="role"
+              class="mt-2 block w-full border border-forge/20 bg-field px-4 py-3 text-forge focus:outline-none focus:border-livewire"
+            />
+          </div>
+
+          <div>
+            <label for="engagement" class="block text-sm font-medium text-forge">Which service are you interested in?</label>
+            <select
+              name="engagement"
+              id="engagement"
+              class="mt-2 block w-full border border-forge/20 bg-field px-4 py-3 text-forge focus:outline-none focus:border-livewire"
+            >
+              <option value="">— Select one —</option>
+              {site.services.map((service) => (
+                <option value={service.name}>{service.name}</option>
+              ))}
+              <option value="Not sure yet">Not sure yet</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium text-forge">What are you working on?</label>
+            <textarea
+              name="message"
+              id="message"
+              rows="5"
+              required
+              class="mt-2 block w-full border border-forge/20 bg-field px-4 py-3 text-forge focus:outline-none focus:border-livewire resize-y"
+              placeholder="A few sentences on where you're stuck, what you've tried, and what you're trying to solve."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary w-full !py-4">
+            Send
+          </button>
+
+          <p class="text-xs text-forge/60 leading-relaxed">
+            Submissions land in Christina's inbox at {site.contact.email}. Never shared, never sold.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Speaking CTA -->
+  <section class="bg-forge text-field">
+    <div class="container-content py-20">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="eyebrow !text-livewire">Speaking Inquiries</p>
+        <span class="accent-line !mx-auto"></span>
+        <h2 class="text-3xl md:text-4xl leading-tight text-field">
+          Booking Christina to speak? Email directly.
+        </h2>
+        <p class="mt-6 text-signal leading-relaxed max-w-xl mx-auto">
+          Include your event name, dates, expected audience size, and the topic you're interested in.
+        </p>
+        <div class="mt-10">
+          <a
+            href={`mailto:${site.contact.speakingEmail}?subject=Speaking%20Inquiry%20-%20Battleborn%20Advisory`}
+            class="btn-primary !bg-livewire !text-field hover:!bg-signal hover:!text-forge"
+          >
+            Email Christina
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

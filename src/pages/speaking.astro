@@ -1,0 +1,178 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../content/site';
+
+const title = 'Speaking';
+const description = `${site.founder.name} speaks on AI implementation in marketing, attribution, lead generation, and modern marketing leadership. Recent stages include LeadsCon, Affiliate Summit East, and Affiliate Summit West.`;
+
+const topics = [
+  {
+    name: 'The Right AI, Not the Most AI',
+    summary:
+      'A practical framework for where AI actually moves the needle inside a marketing function — and where it doesn\'t.'
+  },
+  {
+    name: 'Attribution That Survives Contact With the Funnel',
+    summary:
+      'How to build attribution infrastructure that leadership actually trusts, even when the data is messy.'
+  },
+  {
+    name: 'Modern Marketing Leadership Inside PE-Backed Environments',
+    summary:
+      'What it takes to lead marketing inside a portfolio company where the budget, stakes, and politics are all real.'
+  },
+  {
+    name: 'The Marketing House Before the Buyer Arrives',
+    summary:
+      'How to prepare your marketing infrastructure for a sale, recap, or leadership transition — before due diligence starts asking.'
+  }
+];
+
+const testimonials = [
+  {
+    quote:
+      '[Placeholder for real testimonial once available — showcase card for a peer, past client, or event organizer.]',
+    attribution: 'Placeholder Attribution · Company / Role'
+  }
+];
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@id': `${site.url}/#founder`,
+    '@type': 'Person',
+    name: site.founder.name,
+    jobTitle: 'Marketing Executive · Speaker · Advisor',
+    performerIn: site.speakingAppearances.map((event) => ({
+      '@type': 'Event',
+      name: event.event,
+      location: {
+        '@type': 'Place',
+        name: event.location
+      },
+      startDate: `${event.year}`,
+      performer: { '@id': `${site.url}/#founder` }
+    }))
+  }
+};
+---
+
+<Base title={title} description={description} schema={schema}>
+  <section class="bg-field">
+    <div class="container-content py-24">
+      <div class="max-w-3xl">
+        <p class="eyebrow">Speaking</p>
+        <span class="accent-line"></span>
+        <h1 class="text-4xl md:text-6xl leading-[1.1] font-medium">
+          A speaker who will say something true.
+        </h1>
+        <p class="mt-8 text-lg md:text-xl text-forge/80 leading-relaxed">
+          Christina speaks on AI implementation in marketing, attribution, lead generation, and modern marketing leadership. Twenty-two years of marketing leadership. Eight years inside PE-backed and home services businesses. No hedging, no rehearsed insights, no AI theater.
+        </p>
+        <div class="mt-10 flex gap-4 flex-wrap">
+          <a href={`mailto:${site.contact.speakingEmail}?subject=Speaking%20Inquiry%20-%20Battleborn%20Advisory`} class="btn-primary">Book Christina to Speak</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Topics -->
+  <section class="bg-signal/30">
+    <div class="container-content py-24">
+      <p class="eyebrow">Signature Topics</p>
+      <span class="accent-line"></span>
+      <h2 class="text-3xl md:text-4xl leading-tight max-w-2xl">
+        Talks tuned for marketing peers, PE operators, and conference organizers who want something specific.
+      </h2>
+      <ul class="mt-14 grid gap-6 md:grid-cols-2">
+        {topics.map((topic) => (
+          <li class="bg-field p-8">
+            <p class="eyebrow">Topic</p>
+            <h3 class="text-2xl leading-snug mt-4">{topic.name}</h3>
+            <p class="mt-4 text-forge/70 leading-relaxed">{topic.summary}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Appearances -->
+  <section class="bg-forge text-field">
+    <div class="container-content py-24">
+      <p class="eyebrow !text-livewire">On Stage</p>
+      <span class="accent-line"></span>
+      <h2 class="text-3xl md:text-4xl leading-tight text-field max-w-2xl">
+        Recent and upcoming speaking engagements.
+      </h2>
+      <ul class="mt-14 grid gap-6 md:grid-cols-2">
+        {site.speakingAppearances.map((event) => (
+          <li class="border border-signal/20 p-8">
+            <p class="eyebrow !text-livewire">{event.year} · {event.role}</p>
+            <p class="text-2xl leading-snug mt-4 text-field font-medium">{event.event}</p>
+            <p class="text-signal mt-2">{event.location}</p>
+            <p class="text-sm text-signal/70 mt-4">
+              Topics: {event.topics.join(' · ')}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Audio embed placeholder for ASW panel -->
+  <section class="bg-field">
+    <div class="container-content py-24">
+      <div class="max-w-3xl">
+        <p class="eyebrow">Listen</p>
+        <span class="accent-line"></span>
+        <h2 class="text-3xl md:text-4xl leading-tight">
+          Audio from Affiliate Summit West, January 2026.
+        </h2>
+        <p class="mt-6 text-lg text-forge/80 leading-relaxed">
+          A conversation on AI, attribution, and what actually moves the needle for performance marketers.
+        </p>
+        <div class="mt-10 bg-signal/30 p-8 border border-forge/10">
+          <p class="text-sm text-forge/60 italic">
+            [Audio player embed goes here. Upload the ASW panel audio file to <code class="bg-field px-2 py-1">public/audio/asw-panel-2026.mp3</code> and replace this block with an &lt;audio&gt; element pointing to <code class="bg-field px-2 py-1">/audio/asw-panel-2026.mp3</code>.]
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="bg-signal/30">
+    <div class="container-content py-24">
+      <div class="max-w-3xl">
+        <p class="eyebrow">Testimonials</p>
+        <span class="accent-line"></span>
+        <h2 class="text-3xl md:text-4xl leading-tight">
+          What event organizers and peers have said.
+        </h2>
+        <ul class="mt-14 space-y-10">
+          {testimonials.map((t) => (
+            <li class="bg-field p-10 relative">
+              <p class="text-2xl leading-relaxed text-forge/85 italic font-serif">"{t.quote}"</p>
+              <p class="mt-6 text-sm text-forge/70 tracking-wide uppercase">— {t.attribution}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-forge text-field">
+    <div class="container-content py-20 text-center">
+      <p class="eyebrow !text-livewire">Book</p>
+      <span class="accent-line !mx-auto"></span>
+      <h2 class="text-3xl md:text-4xl leading-tight text-field max-w-2xl mx-auto">
+        Send an email. Include your event and dates.
+      </h2>
+      <div class="mt-10">
+        <a href={`mailto:${site.contact.speakingEmail}?subject=Speaking%20Inquiry%20-%20Battleborn%20Advisory`} class="btn-primary !bg-livewire !text-field hover:!bg-signal hover:!text-forge">Email Christina</a>
+      </div>
+    </div>
+  </section>
+</Base>

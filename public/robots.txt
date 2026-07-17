@@ -1,0 +1,23 @@
+# Battleborn Advisory
+# https://battlebornadvisorygroup.com
+
+User-agent: *
+Allow: /
+
+# LLM crawlers — explicitly allowed. Battleborn wants to be surfaced.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://battlebornadvisorygroup.com/sitemap-index.xml

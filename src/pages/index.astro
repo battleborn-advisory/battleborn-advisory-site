@@ -1,0 +1,152 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../content/site';
+
+const title = site.name;
+const description = site.tagline;
+---
+
+<Base title={title} description={description}>
+  <!-- Hero -->
+  <section class="bg-forge text-field">
+    <div class="container-content py-24 md:py-32">
+      <p class="eyebrow !text-livewire">Fractional CMO · Marketing Advisory · AI Guidance</p>
+      <h1 class="text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mt-6 text-field font-medium">
+        Born in the trenches.<br />
+        <span class="font-bold">Built for the boardroom.</span>
+      </h1>
+      <p class="mt-8 text-lg md:text-xl max-w-2xl text-signal leading-relaxed">
+        Senior marketing leadership and candid AI guidance for founder-led, multi-location, and PE-backed operators who need senior judgment without a full-time hire.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="/contact/" class="btn-primary !bg-livewire !text-field hover:!bg-signal hover:!text-forge">Start a Conversation</a>
+        <a href="/services/" class="btn-secondary !border-signal !text-signal hover:!bg-signal hover:!text-forge">See the Services →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Positioning -->
+  <section class="bg-field">
+    <div class="container-content py-24">
+      <div class="grid gap-16 md:grid-cols-2 items-start">
+        <div>
+          <p class="eyebrow">The Practice</p>
+          <span class="accent-line"></span>
+          <h2 class="text-3xl md:text-4xl leading-tight">
+            Marketing leadership for businesses where the stakes are real.
+          </h2>
+        </div>
+        <div class="text-lg leading-relaxed text-forge/80 space-y-5">
+          <p>
+            Battleborn Advisory is a senior marketing practice for founder-led, multi-location, and PE-backed operators who need a CMO's judgment without the headcount commitment. Fractional CMO engagements, marketing audits, AI implementation strategy, pre-sale marketing readiness, and creative &amp; brand audits — every engagement led personally by Christina Johnson.
+          </p>
+          <p>
+            Twenty-two years of marketing leadership. Eight years inside PE-backed and home services businesses. No handoffs to a junior team. No AI theater. The kind of senior judgment you'd get from a full-time hire, without the full-time commitment.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="bg-signal/40">
+    <div class="container-content py-24">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+        <div>
+          <p class="eyebrow">What We Do</p>
+          <span class="accent-line"></span>
+          <h2 class="text-3xl md:text-4xl leading-tight max-w-xl">
+            Six services. All shaped by real receipts, not theory.
+          </h2>
+        </div>
+        <a href="/services/" class="text-sm font-medium tracking-wide text-forge hover:text-livewire no-underline uppercase">
+          All services →
+        </a>
+      </div>
+      <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {site.services.map((service) => (
+          <li>
+            <a
+              href={`/services/${service.slug}/`}
+              class="block h-full bg-field p-8 no-underline group transition-shadow hover:shadow-lg"
+            >
+              <p class="eyebrow">0{site.services.indexOf(service) + 1}</p>
+              <h3 class="text-2xl mt-4 leading-snug group-hover:text-livewire transition-colors">
+                {service.name}
+              </h3>
+              <p class="mt-4 text-forge/70 leading-relaxed">{service.short}</p>
+              <p class="mt-6 text-sm font-medium tracking-wide text-livewire">Read more →</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- About preview -->
+  <section class="bg-field">
+    <div class="container-content py-24 grid gap-16 md:grid-cols-5 items-start">
+      <div class="md:col-span-2">
+        <p class="eyebrow">The Founder</p>
+        <span class="accent-line"></span>
+        <h2 class="text-3xl md:text-4xl leading-tight">
+          Christina Johnson.<br />
+          Marketing operator.
+        </h2>
+      </div>
+      <div class="md:col-span-3 text-lg leading-relaxed text-forge/80 space-y-5">
+        <p>
+          Twenty-two years of marketing leadership across professional sports, agency, and executive in-house roles. Eight of those years inside PE-backed and home services businesses — scaling a multi-brand portfolio from one to six brands, directing $18M+ in national marketing investment across a 140+ location franchise system, integrating four post-acquisition marketing operations with measurable lift in every market, and building a custom AI dashboard that consolidated three CRMs into board-level executive reporting.
+        </p>
+        <p>
+          The guiding principle: the goal isn't to be the company using the most AI. It's to be the company using the right AI.
+        </p>
+        <p>
+          <a href="/about/" class="text-forge font-medium">Read the full bio →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Speaking preview -->
+  <section class="bg-forge text-field">
+    <div class="container-content py-20">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+        <div>
+          <p class="eyebrow !text-livewire">On Stage</p>
+          <span class="accent-line"></span>
+          <h2 class="text-3xl md:text-4xl leading-tight text-field">
+            Speaking on AI, attribution, and the marketing systems that actually work.
+          </h2>
+        </div>
+        <a href="/speaking/" class="text-sm font-medium tracking-wide text-signal hover:text-livewire no-underline uppercase">
+          See speaking →
+        </a>
+      </div>
+      <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mt-6">
+        {site.speakingAppearances.map((event) => (
+          <li class="border border-signal/20 p-6">
+            <p class="text-xs uppercase tracking-[0.15em] text-signal">{event.year}</p>
+            <p class="text-lg mt-2 leading-snug text-field font-medium">{event.event}</p>
+            <p class="text-sm text-signal/80 mt-1">{event.location}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="bg-field">
+    <div class="container-content py-24 text-center">
+      <p class="eyebrow">Next Step</p>
+      <span class="accent-line !mx-auto"></span>
+      <h2 class="text-3xl md:text-5xl leading-tight max-w-3xl mx-auto">
+        If the gaps in your funnel are costing you, that's the conversation to have.
+      </h2>
+      <div class="mt-10 flex justify-center gap-4 flex-wrap">
+        <a href="/contact/" class="btn-primary">Start a Conversation</a>
+        <a href="/services/" class="btn-secondary">Explore the Services</a>
+      </div>
+    </div>
+  </section>
+</Base>

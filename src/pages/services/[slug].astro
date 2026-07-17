@@ -1,0 +1,263 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site } from '../../content/site';
+
+export function getStaticPaths() {
+  return site.services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service }
+  }));
+}
+
+const { service } = Astro.props;
+
+// Per-service extended content: who it's for, engagement shape, deliverables.
+// Keyed by slug. Keeps site.ts clean while giving each page real depth.
+const details: Record<
+  string,
+  {
+    whoFor: string[];
+    engagementShape: string;
+    deliverables: string[];
+    idealTiming: string;
+  }
+> = {
+  'fractional-cmo': {
+    whoFor: [
+      'PE-backed operators inheriting a marketing function that needs senior leadership',
+      'Multi-brand portfolios scaling past founder-led execution',
+      'Growth-stage companies that need CMO judgment before the full-time hire fits'
+    ],
+    engagementShape:
+      'Typically 3 to 12 months. Weekly cadence, embedded inside the leadership team, direct access to CFO and CEO. Includes strategy setting, team building, vendor accountability, and metric ownership.',
+    deliverables: [
+      'Marketing strategy aligned to revenue outcomes',
+      'Team structure and hiring recommendations',
+      'Vendor and agency accountability framework',
+      'Attribution and reporting infrastructure',
+      'Board-ready marketing dashboards'
+    ],
+    idealTiming:
+      'The moment marketing needs senior judgment on every decision — but the P&L can\'t yet justify a full-time hire.'
+  },
+  'strategic-advisory': {
+    whoFor: [
+      'CEOs and founders who want senior marketing judgment on tap',
+      'PE operating partners diligencing marketing assets across a portfolio',
+      'Companies with a Head of Marketing who needs an outside sounding board'
+    ],
+    engagementShape:
+      'Monthly retainer. Standing calls, ad-hoc responses to decisions and vendor pitches, quarterly reviews, and hands-on support during board prep or M&A moments.',
+    deliverables: [
+      'Standing advisor availability for real-time decisions',
+      'Quarterly marketing performance reviews',
+      'Board and investor materials review',
+      'Vendor selection and negotiation support',
+      'M&A marketing asset diligence'
+    ],
+    idealTiming:
+      'When the leadership team has marketing in place but wants senior judgment reviewing the important calls.'
+  },
+  'pre-sale-marketing-readiness': {
+    whoFor: [
+      'Owners planning a sale, recap, or strategic transition in the next 12 to 24 months',
+      'PE portfolio company leadership preparing for exit',
+      'Founders whose marketing function has never been audited by an outsider'
+    ],
+    engagementShape:
+      'Diagnostic engagement, typically 6 to 10 weeks. Focused on the three pillars that always come up in diligence: platform ownership, data integrity, and brand consistency.',
+    deliverables: [
+      'Full audit of digital platform ownership (Google Business Profile, Google Ads, Meta, website, CRM, analytics, call tracking, email)',
+      'Data integrity assessment — does your CRM tell the truth?',
+      'Brand and digital presence consistency review',
+      'Written diagnostic report and 90-day remediation plan',
+      'Diligence-ready marketing narrative for the deal team'
+    ],
+    idealTiming:
+      'Twelve to twenty-four months before you plan to be in market. Enough runway to actually fix what surfaces.'
+  },
+  'marketing-audit': {
+    whoFor: [
+      'New CEOs or operators inheriting a marketing function',
+      'Companies scaling past founder-led marketing execution',
+      'Leadership teams needing an outside read on what\'s actually working'
+    ],
+    engagementShape:
+      '30-day examination of the full marketing system. Interviews with the team, review of the channel mix, attribution audit, vendor stack assessment, spend review, and a working document delivered live to leadership.',
+    deliverables: [
+      'Written marketing diagnostic (10 to 20 pages)',
+      'Prioritized 90-day action plan',
+      'Vendor accountability and consolidation recommendations',
+      'Team structure and gap analysis',
+      'Attribution and measurement recommendations'
+    ],
+    idealTiming:
+      'The first 90 days of a leadership change, right after an acquisition, or when growth stalls and no one can quite say why.'
+  },
+  'ai-implementation': {
+    whoFor: [
+      'Marketing leaders being pressured to "do more with AI" without a clear plan',
+      'Lean marketing teams looking to consolidate reporting and automate low-value work',
+      'Multi-brand operators drowning in fragmented data across platforms'
+    ],
+    engagementShape:
+      'A structured assessment and roadmap. Interviews with your marketing team, review of current tools and data flows, identification of high-leverage automation and insight opportunities, and a written implementation roadmap with sequencing and effort estimates.',
+    deliverables: [
+      'AI readiness assessment across data, tools, and team capability',
+      'Prioritized use case list with expected impact',
+      'Sequenced implementation roadmap',
+      'Tool evaluation and vendor recommendations',
+      'Optional: hands-on implementation support for priority use cases'
+    ],
+    idealTiming:
+      'Before you buy another AI tool. After you\'ve tried one and been underwhelmed.'
+  },
+  'creative-brand-audit': {
+    whoFor: [
+      'Multi-location operators whose creative varies wildly across markets',
+      'Founders whose brand hasn\'t been reviewed in years',
+      'Marketing teams inheriting an agency relationship that needs an outside read'
+    ],
+    engagementShape:
+      'Focused audit engagement, typically 3 to 4 weeks. Assessment of what you\'re putting in market, brand consistency across channels and markets, messaging effectiveness, and clear direction your designers or agency can execute against.',
+    deliverables: [
+      'Creative audit report with strengths, gaps, and specific recommendations',
+      'Brand consistency scorecard across channels and markets',
+      'Messaging refinement recommendations',
+      'Design and creative direction brief for internal or agency teams',
+      'Optional: agency review and RFP support'
+    ],
+    idealTiming:
+      'When your creative has stopped moving the needle and no one can quite say why — or right before an agency review.'
+  }
+};
+
+const detail = details[service.slug];
+
+const title = service.name;
+const description = service.short;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: service.name,
+  description: service.description,
+  provider: { '@id': `${site.url}/#organization` },
+  serviceType: service.name,
+  areaServed: 'United States',
+  url: `${site.url}/services/${service.slug}/`,
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: `${service.name} deliverables`,
+    itemListElement: detail.deliverables.map((item) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: item }
+    }))
+  }
+};
+
+const otherServices = site.services.filter((s) => s.slug !== service.slug);
+---
+
+<Base title={title} description={description} schema={schema}>
+  <section class="bg-field">
+    <div class="container-content py-24">
+      <div class="max-w-3xl">
+        <p class="eyebrow">Service</p>
+        <span class="accent-line"></span>
+        <h1 class="text-4xl md:text-6xl leading-[1.1] font-medium">
+          {service.name}
+        </h1>
+        <p class="mt-8 text-lg md:text-xl text-forge/80 leading-relaxed">
+          {service.description}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-signal/30">
+    <div class="container-content py-24 grid gap-16 md:grid-cols-3 items-start">
+      <div>
+        <p class="eyebrow">Who It's For</p>
+        <span class="accent-line-sm"></span>
+      </div>
+      <ul class="md:col-span-2 space-y-4 text-lg text-forge/85 leading-relaxed">
+        {detail.whoFor.map((item) => (
+          <li class="flex gap-4">
+            <span class="text-livewire font-medium">→</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-field">
+    <div class="container-content py-24 grid gap-16 md:grid-cols-3 items-start">
+      <div>
+        <p class="eyebrow">How It Works</p>
+        <span class="accent-line-sm"></span>
+      </div>
+      <div class="md:col-span-2 text-lg text-forge/85 leading-relaxed">
+        <p>{detail.engagementShape}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-signal/30">
+    <div class="container-content py-24 grid gap-16 md:grid-cols-3 items-start">
+      <div>
+        <p class="eyebrow">What You Get</p>
+        <span class="accent-line-sm"></span>
+      </div>
+      <ul class="md:col-span-2 space-y-4 text-lg text-forge/85 leading-relaxed">
+        {detail.deliverables.map((item) => (
+          <li class="flex gap-4">
+            <span class="text-livewire font-medium">·</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-field">
+    <div class="container-content py-24 grid gap-16 md:grid-cols-3 items-start">
+      <div>
+        <p class="eyebrow">When To Engage</p>
+        <span class="accent-line-sm"></span>
+      </div>
+      <div class="md:col-span-2 text-lg text-forge/85 leading-relaxed italic">
+        <p>{detail.idealTiming}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-forge text-field">
+    <div class="container-content py-20 text-center">
+      <p class="eyebrow !text-livewire">Ready?</p>
+      <span class="accent-line !mx-auto"></span>
+      <h2 class="text-3xl md:text-4xl leading-tight text-field max-w-2xl mx-auto">
+        Start with a conversation.
+      </h2>
+      <div class="mt-10">
+        <a href="/contact/" class="btn-primary !bg-livewire !text-field hover:!bg-signal hover:!text-forge">Start a Conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-field border-t border-forge/10">
+    <div class="container-content py-16">
+      <p class="eyebrow">Other Services</p>
+      <ul class="mt-8 grid gap-6 md:grid-cols-3 lg:grid-cols-5">
+        {otherServices.map((s) => (
+          <li>
+            <a href={`/services/${s.slug}/`} class="block border border-forge/10 p-6 no-underline hover:border-livewire transition-colors group">
+              <p class="text-lg leading-snug text-forge group-hover:text-livewire transition-colors">{s.name}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
