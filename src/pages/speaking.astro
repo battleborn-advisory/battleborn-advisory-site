@@ -31,8 +31,31 @@ const topics = [
 const testimonials = [
   {
     quote:
-      '[Placeholder for real testimonial once available — showcase card for a peer, past client, or event organizer.]',
-    attribution: 'Placeholder Attribution · Company / Role'
+      'You are a great speaker and clearly very knowledgeable and talented.',
+    attribution: 'Karla Crawford Kerr',
+    role: 'VP of Client Development, Hawthorne Advertising',
+    context: 'Moderator, From Click to Close panel · LeadsCon Las Vegas, April 2026'
+  },
+  {
+    quote:
+      "I've been with the LeadsCon team for five years and I've never heard such overwhelmingly positive reviews of the sessions. Simply put, this year's speaking faculty crushed it and overdelivered.",
+    attribution: 'Ian McRae',
+    role: 'Head of Editorial & Content, LeadsCon',
+    context: 'On the LeadsCon 2026 speaking faculty, which included Christina'
+  },
+  {
+    quote:
+      'One of the most energizing conversations I’ve had on a conference stage.',
+    attribution: 'Karla Crawford Kerr',
+    role: 'VP of Client Development, Hawthorne Advertising',
+    context: 'On the From Click to Close panel she moderated · LeadsCon Las Vegas, April 2026'
+  },
+  {
+    quote:
+      'I took a peek at your videos and loved following your thread on the things AI is currently making more difficult, and your optimism that the future of AI will allow marketers to get back to the creative exercises that attracted us to the profession in the first place.',
+    attribution: 'Kiera Wiatrak',
+    role: 'Founder, Dogeared Digital',
+    context: 'On Christina’s Marketing AI Pulse interview, June 2026'
   }
 ];
 
@@ -191,7 +214,7 @@ const schema = {
     </div>
   </section>
 
-  <!-- Audio embed placeholder for ASW panel -->
+  {/* Audio from ASW + City Pub video — hidden until media is ready
   <section class="bg-field">
     <div class="container-content py-24">
       <div class="max-w-3xl">
@@ -205,12 +228,13 @@ const schema = {
         </p>
         <div class="mt-10 bg-signal/30 p-8 border border-forge/10">
           <p class="text-sm text-forge/60 italic">
-            [Audio player embed goes here. Upload the ASW panel audio file to <code class="bg-field px-2 py-1">public/audio/asw-panel-2026.mp3</code> and replace this block with an &lt;audio&gt; element pointing to <code class="bg-field px-2 py-1">/audio/asw-panel-2026.mp3</code>.]
+            [Audio player embed goes here. Upload the ASW panel audio file to public/audio/asw-panel-2026.mp3 and replace this block with an audio element pointing to /audio/asw-panel-2026.mp3.]
           </p>
         </div>
       </div>
     </div>
   </section>
+  */}
 
   <!-- Testimonial -->
   <section class="bg-signal/30">
@@ -224,8 +248,10 @@ const schema = {
         <ul class="mt-14 space-y-10">
           {testimonials.map((t) => (
             <li class="bg-field p-10 relative">
-              <p class="text-2xl leading-relaxed text-forge/85 italic font-serif">"{t.quote}"</p>
-              <p class="mt-6 text-sm text-forge/70 tracking-wide uppercase">— {t.attribution}</p>
+              <p class="text-xl md:text-2xl leading-relaxed text-forge/85 italic font-serif">&ldquo;{t.quote}&rdquo;</p>
+              <p class="mt-6 text-sm font-medium text-forge tracking-wide uppercase">— {t.attribution}</p>
+              <p class="mt-1 text-sm text-forge/70">{t.role}</p>
+              {t.context && <p class="mt-2 text-xs text-forge/55 italic">{t.context}</p>}
             </li>
           ))}
         </ul>
