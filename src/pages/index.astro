@@ -8,19 +8,40 @@ const description = site.tagline;
 
 <Base title={title} description={description}>
   <!-- Hero -->
-  <section class="bg-forge text-field">
-    <div class="container-content py-24 md:py-32">
-      <p class="eyebrow !text-livewire">Fractional CMO · Marketing Advisory · AI Guidance</p>
-      <h1 class="text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mt-6 text-field font-medium">
-        Born in the trenches.<br />
-        <span class="font-bold">Built for the boardroom.</span>
-      </h1>
-      <p class="mt-8 text-lg md:text-xl max-w-2xl text-signal leading-relaxed">
-        Senior marketing leadership and candid AI guidance for founder-led, multi-location, and PE-backed operators who need senior judgment without a full-time hire.
-      </p>
-      <div class="mt-10 flex flex-wrap gap-4">
-        <a href="/contact/" class="btn-primary !bg-livewire !text-field hover:!bg-signal hover:!text-forge">Start a Conversation</a>
-        <a href="/services/" class="btn-secondary !border-signal !text-signal hover:!bg-signal hover:!text-forge">See the Services →</a>
+  <section class="bg-forge text-field overflow-hidden">
+    <div class="container-content py-20 md:py-28 lg:py-32">
+      <div class="grid gap-12 lg:gap-16 lg:grid-cols-12 items-center">
+        <div class="lg:col-span-7">
+          <p class="eyebrow !text-livewire">Fractional CMO · Marketing Advisory · AI Guidance</p>
+          <h1 class="text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mt-6 text-field font-medium">
+            Born in the trenches.<br />
+            <span class="font-bold">Built for the boardroom.</span>
+          </h1>
+          <p class="mt-8 text-lg md:text-xl max-w-2xl text-signal leading-relaxed">
+            Senior marketing leadership and candid AI guidance for founder-led, multi-location, and PE-backed operators who need senior judgment without a full-time hire.
+          </p>
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a href="/contact/" class="btn-primary !bg-livewire !text-field hover:!bg-signal hover:!text-forge">Start a Conversation</a>
+            <a href="/services/" class="btn-secondary !border-signal !text-signal hover:!bg-signal hover:!text-forge">See the Services →</a>
+          </div>
+        </div>
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-sm lg:max-w-none">
+            <!-- Live Wire accent block behind image -->
+            <div class="absolute -top-4 -right-4 w-24 h-24 bg-livewire hidden lg:block" aria-hidden="true"></div>
+            <!-- Signal Mint accent block behind image -->
+            <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-signal/40 hidden lg:block" aria-hidden="true"></div>
+            <img
+              src="/images/speaking-asw-portrait.jpg"
+              alt="Christina Johnson speaking on stage at Affiliate Summit West 2026"
+              class="relative w-full h-auto object-cover shadow-xl"
+              loading="eager"
+              fetchpriority="high"
+              width="1200"
+              height="1600"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -87,6 +108,14 @@ const description = site.tagline;
   <section class="bg-field">
     <div class="container-content py-24 grid gap-16 md:grid-cols-5 items-start">
       <div class="md:col-span-2">
+        <img
+          src="/images/headshot-primary.jpg"
+          alt="Christina Johnson, founder of Battleborn Advisory"
+          class="w-full h-auto mb-8 shadow-md"
+          loading="lazy"
+          width="800"
+          height="1000"
+        />
         <p class="eyebrow">The Founder</p>
         <span class="accent-line"></span>
         <h2 class="text-3xl md:text-4xl leading-tight">

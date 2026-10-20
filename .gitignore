@@ -26,3 +26,6 @@ yarn-error.log*
 
 # cloudflare
 .wrangler/
+
+# image backups from compression
+*.bak

@@ -9,15 +9,28 @@ const description = `About ${site.founder.name}, founder of ${site.name} — 22-
 <Base title={title} description={description}>
   <section class="bg-field">
     <div class="container-content py-24">
-      <div class="max-w-3xl">
-        <p class="eyebrow">About</p>
-        <span class="accent-line"></span>
-        <h1 class="text-4xl md:text-6xl leading-[1.1] font-medium">
-          A senior marketing operator, not a consultant with a deck.
-        </h1>
-        <p class="mt-8 text-lg md:text-xl text-forge/80 leading-relaxed">
-          Battleborn Advisory is a solo senior marketing practice founded and led by {site.founder.name} in Atlanta, Georgia. Every engagement is led personally by Christina — no handoffs to a junior team, no packaged strategy pulled from a shelf.
-        </p>
+      <div class="grid gap-12 lg:gap-16 lg:grid-cols-12 items-center">
+        <div class="lg:col-span-7">
+          <p class="eyebrow">About</p>
+          <span class="accent-line"></span>
+          <h1 class="text-4xl md:text-6xl leading-[1.1] font-medium">
+            A senior marketing operator, not a consultant with a deck.
+          </h1>
+          <p class="mt-8 text-lg md:text-xl text-forge/80 leading-relaxed">
+            Battleborn Advisory is a solo senior marketing practice founded and led by {site.founder.name} in Atlanta, Georgia. Every engagement is led personally by Christina — no handoffs to a junior team, no packaged strategy pulled from a shelf.
+          </p>
+        </div>
+        <div class="lg:col-span-5">
+          <img
+            src="/images/headshot-primary.jpg"
+            alt="Christina Johnson, founder of Battleborn Advisory"
+            class="w-full h-auto shadow-xl"
+            loading="eager"
+            fetchpriority="high"
+            width="800"
+            height="1000"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -47,6 +60,25 @@ const description = `About ${site.founder.name}, founder of ${site.name} — 22-
           Earlier: VP of Brand Strategy at Echo Media Agency, leading client strategy and performance marketing for Kohler's Walk-In Bath &amp; Shower division; consolidating 20+ third-party lead gen vendors into a materially improved ROI on Kohler's investment. Founded Battleborn Creative in 2017. Spent 13 years leading digital, media, and operations for the Atlanta Gladiators before all of that.
         </p>
       </div>
+    </div>
+  </section>
+
+  <!-- Candid speaking shot -->
+  <section class="bg-forge">
+    <div class="container-content py-16">
+      <figure class="max-w-5xl mx-auto">
+        <img
+          src="/images/speaking-citypub-workshop.jpg"
+          alt="Christina Johnson speaking at the Georgia Oak Marketing Conference 2025"
+          class="w-full h-auto shadow-xl"
+          loading="lazy"
+          width="1600"
+          height="1067"
+        />
+        <figcaption class="mt-4 text-sm text-signal/80 text-center italic">
+          Georgia Oak Marketing Conference 2025
+        </figcaption>
+      </figure>
     </div>
   </section>
 
