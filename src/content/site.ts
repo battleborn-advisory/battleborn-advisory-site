@@ -69,6 +69,13 @@ export const site = {
   ],
   speakingAppearances: [
     {
+      event: 'City Publications October Meetup',
+      year: 2026,
+      location: 'Atlanta, GA',
+      role: 'Featured Speaker',
+      topics: ['2027 Marketing Planning', 'Budget Frameworks', 'Awareness vs. Demand Capture']
+    },
+    {
       event: 'LeadsCon',
       year: 2026,
       location: 'Las Vegas, NV',

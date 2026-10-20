@@ -17,7 +17,13 @@ const currentPath = Astro.url.pathname;
 <header class="border-b border-forge/10">
   <nav class="container-content flex items-center justify-between py-6" aria-label="Primary">
     <a href="/" class="flex items-center gap-3 no-underline group" aria-label={`${site.name} home`}>
-      <span class="text-lg font-medium text-forge">{site.name}</span>
+      <img
+        src="/images/PlatformIcon_Full_C2_Transp.png"
+        alt={`${site.name} logo`}
+        class="h-10 md:h-11 w-auto"
+        width="400"
+        height="110"
+      />
     </a>
     <ul class="hidden md:flex items-center gap-8 text-sm">
       {navItems.map(({ href, label }) => (
