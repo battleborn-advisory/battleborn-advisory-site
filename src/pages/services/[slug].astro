@@ -134,6 +134,22 @@ const details: Record<
 
 const detail = details[service.slug];
 
+// Per-service client testimonials. Add entries by slug as they come in.
+const serviceTestimonials: Record<
+  string,
+  { quote: string; attribution: string; role: string; context: string }
+> = {
+  'creative-brand-audit': {
+    quote:
+      'This is so comprehensive. I just looked over a few, and do want your commentary before taking action. Sounds like there is some really low hanging fruit, which is great.',
+    attribution: 'Brian Jungles',
+    role: 'Owner, City Publications Atlanta',
+    context: 'On the Creative & Brand Audit Christina delivered for City Publications, October 2026'
+  }
+};
+
+const testimonial = serviceTestimonials[service.slug];
+
 const title = service.name;
 const description = service.short;
 
@@ -232,6 +248,26 @@ const otherServices = site.services.filter((s) => s.slug !== service.slug);
       </div>
     </div>
   </section>
+
+  {testimonial && (
+    <section class="bg-field border-t border-forge/10">
+      <div class="container-content py-24">
+        <div class="max-w-4xl mx-auto">
+          <p class="eyebrow">Client Note</p>
+          <span class="accent-line"></span>
+          <figure class="mt-8">
+            <blockquote class="text-2xl md:text-3xl leading-relaxed text-forge/90 italic font-serif">
+              &ldquo;{testimonial.quote}&rdquo;
+            </blockquote>
+            <figcaption class="mt-6 text-sm text-forge/70">
+              <span class="font-medium text-forge not-italic">{testimonial.attribution}</span> &middot; {testimonial.role}
+              <span class="block mt-1 text-xs text-forge/55 italic">{testimonial.context}</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  )}
 
   <section class="bg-forge text-field">
     <div class="container-content py-20 text-center">
